@@ -1,18 +1,4 @@
 const Form = ({ form, updateField, handleSubmit, error }) => {
-  // const formatInput = (val) => {
-  //   if (!val) return
-  //   let splitter = val.toString().split("")
-
-  //   let firstFour = splitter.splice(0, 4).toString().replaceAll(",", "")
-  //   let secondFour = splitter.splice(0, 4).toString().replaceAll(",", "")
-  //   let thirdFour = splitter.splice(0, 4).toString().replaceAll(",", "")
-  //   let fourthFour = splitter.splice(0, 4).toString().replaceAll(",", "")
-  //   if (val.length == 16) {
-  //     val = `${firstFour} ${secondFour} ${thirdFour} ${fourthFour}`
-  //     document.querySelector("#number").innerHTML = val
-  //     // document.querySelector("#number").value = real
-  //   }
-  // }
   let valid = false
   if (error.month.error == true || error.year.error == true) {
     valid = !valid
@@ -37,7 +23,6 @@ const Form = ({ form, updateField, handleSubmit, error }) => {
           {error.name.error && (
             <p className="error-val">Wrong, format text only</p>
           )}
-          {/* <p className="error-val">Wrong, format text only</p> */}
         </div>
         <div className=" mb-5">
           <label htmlFor="card-number" className="label-main">

@@ -35,11 +35,27 @@ function App() {
       [e.target.name]: e.target.value,
     }
     setForm(nextFormState)
-    console.log(form)
   }
+  const nameValidator = () => {
+    let pattern = /[0-9]/g
+    if (form.name === "" || form.name.match(pattern)) {
+      const newErrorState = {
+        ...error,
+        [error.name.error]: (error.name.error = true),
+      }
+      setError(newErrorState)
+    } else {
+      const newErrorState = {
+        ...error,
+        [error.name.error]: (error.name.error = false),
+      }
+      setError(newErrorState)
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    alert("preventDefault")
+    nameValidator()
   }
   return (
     <>
