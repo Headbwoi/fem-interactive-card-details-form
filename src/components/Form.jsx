@@ -1,10 +1,6 @@
 const Form = ({ form, updateField, handleSubmit, error }) => {
-  let valid = false
-  if (error.month.error == true || error.year.error == true) {
-    valid = !valid
-  }
   return (
-    <section className="w-full lg:w-[24.0625rem] ml-auto px-6 lg:px-0">
+    <section className="w-full lg:w-[24.0625rem] ml-auto px-6 lg:px-0 form-el">
       <form className="w-full " onSubmit={handleSubmit}>
         <div className=" mb-5">
           <label htmlFor="cardholder-name" className="label-main">
@@ -16,13 +12,11 @@ const Form = ({ form, updateField, handleSubmit, error }) => {
             value={form.name}
             onChange={updateField}
             className={`input-main w-full ${
-              error.name.error ? "border-error" : "border-lightGrayishViolet"
+              error.name ? "border-error" : "border-lightGrayishViolet"
             }`}
             placeholder="e.g. Jane Appleseed"
           />
-          {error.name.error && (
-            <p className="error-val">{error.name.message}</p>
-          )}
+          {error.name && <p className="error-val">{error.name}</p>}
         </div>
         <div className=" mb-5">
           <label htmlFor="card-number" className="label-main">
@@ -36,13 +30,11 @@ const Form = ({ form, updateField, handleSubmit, error }) => {
             value={form.number}
             onChange={updateField}
             className={`input-main w-full ${
-              error.number.error ? "border-error" : "border-lightGrayishViolet"
+              error.number ? "border-error" : "border-lightGrayishViolet"
             }`}
             placeholder="e.g. 1234 5678 9123 0000"
           />
-          {error.number.error && (
-            <p className="error-val">{error.number.message}</p>
-          )}
+          {error.number && <p className="error-val">{error.number}</p>}
         </div>
         <div className="flex items-baseline justify-start space-x-3  mb-5">
           <div className="flex items-start flex-col">
@@ -58,9 +50,7 @@ const Form = ({ form, updateField, handleSubmit, error }) => {
                 value={form.month}
                 onChange={updateField}
                 className={`input-main w-[4.625rem] ${
-                  error.month.error
-                    ? "border-error"
-                    : "border-lightGrayishViolet"
+                  error.month ? "border-error" : "border-lightGrayishViolet"
                 } `}
                 placeholder="MM"
               />
@@ -71,19 +61,15 @@ const Form = ({ form, updateField, handleSubmit, error }) => {
                 value={form.year}
                 onChange={updateField}
                 className={`input-main w-[4.625rem] ${
-                  error.year.error
-                    ? "border-error"
-                    : "border-lightGrayishViolet"
+                  error.year ? "border-error" : "border-lightGrayishViolet"
                 } `}
                 placeholder="YY"
               />
             </div>
-            {error.month.error && (
-              <p className="error-val text-left">{error.month.message}</p>
+            {error.month && (
+              <p className="error-val text-left">{error.month}</p>
             )}
-            {error.year.error && (
-              <p className="error-val text-left">{error.year.message}</p>
-            )}
+            {error.year && <p className="error-val text-left">{error.year}</p>}
           </div>
           <div className="flex items-start flex-col">
             <label htmlFor="cvc" className="label-main">
@@ -96,11 +82,11 @@ const Form = ({ form, updateField, handleSubmit, error }) => {
               value={form.cvc}
               onChange={updateField}
               className={`input-main w-[7.875rem] ${
-                error.cvc.error ? "border-error" : "border-lightGrayishViolet"
+                error.cvc ? "border-error" : "border-lightGrayishViolet"
               }`}
               placeholder="e.g. 123"
             />
-            {error.cvc.error && <p className="error-val">Can't be blank</p>}
+            {error.cvc && <p className="error-val">Can't be blank</p>}
           </div>
         </div>
         <button className="submit">Confirm</button>

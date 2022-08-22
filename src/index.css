@@ -19,3 +19,16 @@
 .submit {
   @apply h-[3.375rem] w-full bg-veryDarkViolet text-White grid place-items-center rounded-lg mb-11 lg:mb-0 text-lg tracking-wide;
 }
+.completed {
+  animation: fade-in 1.5s ease-in-out;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
