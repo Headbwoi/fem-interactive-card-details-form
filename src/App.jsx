@@ -13,7 +13,7 @@ function App() {
   })
   const [error, setError] = useState({
     name: {
-      error: true,
+      error: false,
     },
     number: {
       error: false,

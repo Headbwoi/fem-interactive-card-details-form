@@ -13,6 +13,10 @@ const Form = ({ form, updateField, handleSubmit, error }) => {
   //     // document.querySelector("#number").value = real
   //   }
   // }
+  let valid = false
+  if (error.month.error == true || error.year.error == true) {
+    valid = !valid
+  }
   return (
     <section className="w-full lg:w-[24.0625rem] ml-auto px-6 lg:px-0">
       <form className="w-full " onSubmit={handleSubmit}>
@@ -52,9 +56,11 @@ const Form = ({ form, updateField, handleSubmit, error }) => {
             }`}
             placeholder="e.g. 1234 5678 9123 0000"
           />
-          {/* <p className="error-val">Wrong format, numbers only</p> */}
+          {error.number.error && (
+            <p className="error-val">Wrong format, numbers only</p>
+          )}
         </div>
-        <div className="flex items-center justify-start space-x-3  mb-5">
+        <div className="flex items-baseline justify-start space-x-3  mb-5">
           <div className="flex items-start flex-col">
             <label htmlFor="expiry date" className="label-main">
               Exp. Date (MM/YY)
@@ -66,7 +72,11 @@ const Form = ({ form, updateField, handleSubmit, error }) => {
                 maxLength={2}
                 value={form.month}
                 onChange={updateField}
-                className="input-main w-[4.625rem]"
+                className={`input-main w-[4.625rem] ${
+                  error.month.error
+                    ? "border-error"
+                    : "border-lightGrayishViolet"
+                } `}
                 placeholder="MM"
               />
               <input
@@ -75,11 +85,15 @@ const Form = ({ form, updateField, handleSubmit, error }) => {
                 maxLength={2}
                 value={form.year}
                 onChange={updateField}
-                className="input-main w-[4.625rem]"
+                className={`input-main w-[4.625rem] ${
+                  error.year.error
+                    ? "border-error"
+                    : "border-lightGrayishViolet"
+                } `}
                 placeholder="YY"
               />
             </div>
-            {/* <p className="error-val text-left">Can't be blank</p> */}
+            {valid && <p className="error-val text-left">Can't be blank</p>}
           </div>
           <div className="flex items-start flex-col">
             <label htmlFor="cvc" className="label-main">
@@ -91,10 +105,12 @@ const Form = ({ form, updateField, handleSubmit, error }) => {
               maxLength={3}
               value={form.cvc}
               onChange={updateField}
-              className="input-main w-[126px]"
+              className={`input-main w-[7.875rem] ${
+                error.cvc.error ? "border-error" : "border-lightGrayishViolet"
+              }`}
               placeholder="e.g. 123"
             />
-            {/* <p className="error-val">Can't be blank</p> */}
+            {error.cvc.error && <p className="error-val">Can't be blank</p>}
           </div>
         </div>
         <button className="submit">Confirm</button>
