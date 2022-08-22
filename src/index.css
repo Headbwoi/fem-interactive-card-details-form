@@ -1,6 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* add font import */
 
-/* body copy font size should be 18px */
+* {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+}
+.input-main {
+  @apply block h-12 rounded-lg px-[1.125rem] border-2  focus:border focus:border-l-gradient1 focus:border-t-gradient1 focus:border-b-gradient2 focus:border-r-gradient2 outline-none text-lg font-medium mb-1 hover:cursor-pointer;
+}
+.error-val {
+  @apply text-sm text-error;
+}
+.label-main {
+  @apply text-veryDarkViolet uppercase block mb-1.5 text-sm lg:text-base font-medium;
+}
+.submit {
+  @apply h-[3.375rem] w-full bg-veryDarkViolet text-White grid place-items-center rounded-lg mb-11 lg:mb-0 text-lg tracking-wide;
+}
