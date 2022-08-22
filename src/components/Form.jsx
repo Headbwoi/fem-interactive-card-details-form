@@ -21,7 +21,7 @@ const Form = ({ form, updateField, handleSubmit, error }) => {
             placeholder="e.g. Jane Appleseed"
           />
           {error.name.error && (
-            <p className="error-val">Wrong, format text only</p>
+            <p className="error-val">{error.name.message}</p>
           )}
         </div>
         <div className=" mb-5">
@@ -35,14 +35,13 @@ const Form = ({ form, updateField, handleSubmit, error }) => {
             maxLength={16}
             value={form.number}
             onChange={updateField}
-            // onKeyUp={(e) => formatInput(e.target.value)}
             className={`input-main w-full ${
               error.number.error ? "border-error" : "border-lightGrayishViolet"
             }`}
             placeholder="e.g. 1234 5678 9123 0000"
           />
           {error.number.error && (
-            <p className="error-val">Wrong format, numbers only</p>
+            <p className="error-val">{error.number.message}</p>
           )}
         </div>
         <div className="flex items-baseline justify-start space-x-3  mb-5">
@@ -54,6 +53,7 @@ const Form = ({ form, updateField, handleSubmit, error }) => {
               <input
                 type="text"
                 name="month"
+                max={12}
                 maxLength={2}
                 value={form.month}
                 onChange={updateField}
@@ -78,7 +78,12 @@ const Form = ({ form, updateField, handleSubmit, error }) => {
                 placeholder="YY"
               />
             </div>
-            {valid && <p className="error-val text-left">Can't be blank</p>}
+            {error.month.error && (
+              <p className="error-val text-left">{error.month.message}</p>
+            )}
+            {error.year.error && (
+              <p className="error-val text-left">{error.year.message}</p>
+            )}
           </div>
           <div className="flex items-start flex-col">
             <label htmlFor="cvc" className="label-main">

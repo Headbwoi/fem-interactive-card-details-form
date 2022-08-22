@@ -8,7 +8,7 @@
   font-weight: 500;
 }
 .input-main {
-  @apply block h-12 rounded-lg px-[1.125rem] border-2 bg-White focus:border focus:border-l-gradient1 focus:border-t-gradient1 focus:border-b-gradient2 focus:border-r-gradient2 outline-none text-lg font-medium mb-1 hover:cursor-pointer;
+  @apply block h-12 rounded-lg px-[1.125rem] border-2 bg-White focus:border focus:border-l-gradient1 focus:border-t-gradient1 focus:border-b-gradient2 focus:border-r-gradient2 outline-none text-lg font-medium mb-1 hover:cursor-pointer capitalize;
 }
 .error-val {
   @apply text-sm text-error;
