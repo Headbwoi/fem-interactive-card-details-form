@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Card from "./components/Card"
 import Completed from "./components/Completed"
 import Form from "./components/Form"
